@@ -32,6 +32,7 @@ module.exports = function (app) {
 
     // Route for getting some data about our user to be used client side
     app.get("/api/users/:id", isApiAuthenticated, function (req, res) {
+        // We don't want to let people get data about users other than themselves!
         if(req.user.id !== parseInt(req.params.id)) {
             return res.sendStatus(403);
         }
