@@ -1,0 +1,31 @@
+{
+  "name": "sequelize-passport-example",
+  "version": "1.0.0",
+  "description": "This is an example project :)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmtenhouse/sequelize-passport-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmtenhouse/sequelize-passport-example/issues"
+  },
+  "homepage": "https://github.com/kmtenhouse/sequelize-passport-example#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mysql2": "^2.0.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.21.2"
+  }
+}
