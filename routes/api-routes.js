@@ -29,11 +29,15 @@ module.exports = function (app) {
             });
     });
 
+    // Route for logging user out via ajax/api
+    app.get("/api/user_data", isApiAuthenticated, function (req, res) {
+        res.json(req.user);
+    });
 
     // Route for getting some data about our user to be used client side
     app.get("/api/users/:id", isApiAuthenticated, function (req, res) {
         // We don't want to let people get data about users other than themselves!
-        if(req.user.id !== parseInt(req.params.id)) {
+        if (req.user.id !== parseInt(req.params.id)) {
             return res.sendStatus(403);
         }
         // Otherwise send back the user's email and id
