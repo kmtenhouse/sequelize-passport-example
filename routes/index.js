@@ -1,8 +1,13 @@
 "use strict";
 
-const path = require("path");
-const isAuthenticated = require("../middleware/isAuthenticated");
+//require packages
 const router = require("express").Router();
+const path = require("path");
+
+//Require auth middleware for HTML routes
+const isAuthenticated = require("../middleware/isAuthenticated");
+
+//Require our api and auth routes
 const apiRoutes = require("./api");
 const authRoutes = require("./auth");
 
@@ -13,9 +18,8 @@ router.use("/api", apiRoutes);
 router.use("/auth", authRoutes);
 
 //MAIN HTML ROUTES
-//healthcheck route
 router.get("/", function (req, res) {
-    // If the user already has an account send them to the members page
+    // If the user is already logged in -> send them to the members page
     if (req.user) {
         return res.redirect("/members");
     }
@@ -23,7 +27,7 @@ router.get("/", function (req, res) {
 });
 
 router.get("/login", function (req, res) {
-    // If the user already has an account send them to the members page
+    // If the user is already logged in -> send them to the members page
     if (req.user) {
         return res.redirect("/members");
     }
@@ -31,7 +35,7 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/signup", function (req, res) {
-    // If the user already has an account send them to the members page
+    // If the user is already logged in -> send them to the members page
     if (req.user) {
         return res.redirect("/members");
     }
