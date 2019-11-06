@@ -36,7 +36,7 @@ $(document).ready(function() {
     }
   
     function handleLoginErr(err) {
-      $("#alert .msg").text(err.responseJSON);
+      $("#alert .msg").text("Sorry, we aren't able to sign you up with that email!");
       $("#alert").fadeIn(500);
     }
   });

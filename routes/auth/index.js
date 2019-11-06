@@ -3,18 +3,15 @@
 const router = require("express").Router();
 
 // Requiring our models and passport as we've configured it
-var db = require("../../models/");
 const passport = require("../../config/passport");
+var db = require("../../models/");
 
 //MAIN ROUTES
 // Using the passport.authenticate middleware with our local strategy.
-// If the user has valid login credentials, send them to the members page.
+// If the user has valid login credentials, send a status code of 200 (OK)
 // Otherwise the user will be sent an error
 router.post("/login", passport.authenticate("local"), function (req, res) {
-    res.json({
-        email: req.user.email,
-        id: req.user.id
-    });
+    res.status(200).json({ id: req.user.id });
 });
 
 // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
