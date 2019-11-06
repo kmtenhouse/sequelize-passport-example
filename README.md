@@ -29,7 +29,8 @@ SESSION_KEY=arandompasswordmadeupbyyou
 
 ## Suggestions
 * Take a look at the existing html files. They're pretty bare bones!  What additional form validation could you add for login and signup?  What about custom error handling?
-* Note: password reset is its own kettle of wax!  For this project, it would be okay not to add a reset route -- or you can do some research :)
+* Hint: take a look at the error object that comes to the front end. It may not be a standard format Error object.
+* Note: password reset is its own kettle of wax!  For this project, it would be okay not to add a reset route -- or you can do some research and figure it out :)
 
 ## Additional Resources
 * [OWASP Cheat Sheet - Authentication](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Authentication_Cheat_Sheet.md#authentication-and-error-messages)

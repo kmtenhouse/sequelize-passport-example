@@ -12,13 +12,17 @@ $(document).ready(function() {
         password: passwordInput.val().trim()
       };
   
-      if (!userData.email || !userData.password) {
+      if(!userData.email) {
+        handleLoginError(new Error("Please provide an email!"));
+        return;
+      }
+      if (!userData.password) {
+        handleLoginError(new Error("Please provide a password!"));
         return;
       }
   
       // If we have an email and password we run the loginUser function and clear the form
       loginUser(userData.email, userData.password);
-      emailInput.val("");
       passwordInput.val("");
     });
   
@@ -31,8 +35,13 @@ $(document).ready(function() {
         .then(function() {
           window.location.replace("/members");
         })
-        .catch(function(err) {
-          console.log(err);
-        });
+        .catch(handleLoginError);
+    }
+
+    function handleLoginError(err) {
+      console.log(err);
+      const messageToShow = err.message || "Sorry, your username or password was incorrect!";
+      $("#alert .msg").text(messageToShow);
+      $("#alert").fadeIn(500);
     }
   });

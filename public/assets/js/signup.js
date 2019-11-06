@@ -12,7 +12,12 @@ $(document).ready(function() {
         password: passwordInput.val().trim()
       };
   
-      if (!userData.email || !userData.password) {
+      if(!userData.email) {
+        handleSignupError(new Error("Please provide an email!"));
+        return;
+      }
+      if (!userData.password) {
+        handleSignupError(new Error("Please provide a password!"));
         return;
       }
       // If we have an email and password, run the signUpUser function
@@ -32,11 +37,13 @@ $(document).ready(function() {
           window.location.replace("/members");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
-        .catch(handleLoginErr);
+        .catch(handleSignupError);
     }
   
-    function handleLoginErr(err) {
-      $("#alert .msg").text("Sorry, we aren't able to sign you up with that email!");
+    function handleSignupError(err) {
+      console.log(err);
+      const messageToShow = err.message || "Sorry, we can't sign you up with that name and password!";
+      $("#alert .msg").text(messageToShow);
       $("#alert").fadeIn(500);
     }
   });
